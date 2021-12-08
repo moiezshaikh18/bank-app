@@ -16,7 +16,7 @@ class BankApp extends React.Component {
         balance: 1000,
       },
       {
-        acc_no: 1,
+        acc_no: 3,
         acc_name: "Gaurish",
         balance: 1000,
       },
@@ -25,10 +25,16 @@ class BankApp extends React.Component {
 
   handelOnChange = (e) => {
     let newText = +e.target.value;
-    this.setState({ newText });
+    this.setState({ value: newText });
     console.log(newText);
   };
-  onClickDeposit = () => {};
+  onClickDeposit = () => {
+    let accCopy = this.state.accounts;
+    let index = accCopy.findIndex((ind) => {
+      accCopy.acc_no === 1;
+    });
+    console.log(ind);
+  };
 
   onClickWithdraw = () => {};
   render() {
