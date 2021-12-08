@@ -1,25 +1,47 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Transaction from "./components/Transaction";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class BankApp extends React.Component {
+  state = {
+    value: 0,
+    accounts: [
+      {
+        acc_no: 1,
+        acc_name: "moiz",
+        balance: 1000,
+      },
+      {
+        acc_no: 2,
+        acc_name: "Girish",
+        balance: 1000,
+      },
+      {
+        acc_no: 1,
+        acc_name: "Gaurish",
+        balance: 1000,
+      },
+    ],
+  };
+
+  handelOnChange = (e) => {
+    let newText = +e.target.value;
+    this.setState({ newText });
+    console.log(newText);
+  };
+  onClickDeposit = () => {};
+
+  onClickWithdraw = () => {};
+  render() {
+    return (
+      <div>
+        <Transaction
+          onChange={this.handelOnChange}
+          deposit={this.onClickDeposit}
+          withdraw={this.onClickWithdraw}
+          amount={this.state.value}
+        ></Transaction>
+      </div>
+    );
+  }
 }
-
-export default App;
+export default BankApp;
